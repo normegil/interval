@@ -36,12 +36,14 @@ func NewIntegerInterval(min, max int, minIncluded, maxIncluded bool) (*IntervalI
 	}, nil
 }
 
-// ParseIntervalInteger can be used to create a interval of integers from a string.
-// Supported format are:
-//	* [1;2]
-//  * ]1;2[
-//  * [1;2[
-//  * ]1;2]
+/*
+ParseIntervalInteger can be used to create a interval of integers from a string.
+Supported format are:
+	[1;2]
+	]1;2[
+	[1;2[
+	]1;2]
+*/
 func ParseIntervalInteger(s string) (*IntervalInteger, error) {
 	externalSign := `(\[|\])`
 	separator := `;`
