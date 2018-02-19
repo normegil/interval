@@ -37,6 +37,17 @@ func NewIntegerInterval(min, max int, minIncluded, maxIncluded bool) (*IntervalI
 }
 
 /*
+MustParseIntervalInteger is the same action as ParseIntervalInteger, but will panic if interval cannot be parsed
+*/
+func MustParseIntervalInteger(s string) *IntervalInteger {
+	interval, err := ParseIntervalInteger(s)
+	if err != nil {
+		panic(err)
+	}
+	return interval
+}
+
+/*
 ParseIntervalInteger can be used to create a interval of integers from a string.
 Supported format are:
 	[1;2]
@@ -66,7 +77,7 @@ func ParseIntervalInteger(s string) (*IntervalInteger, error) {
 		maxIncluded = true
 	}
 
-	numbersAndSeparator := s[1 : len(s)-1]
+	numbersAndSeparator := s[1: len(s)-1]
 	numbers := strings.Split(numbersAndSeparator, ";")
 	min, err := strconv.Atoi(numbers[0])
 	if nil != err {
@@ -135,4 +146,19 @@ func (i IntervalInteger) HighestNumberIncluded() int {
 // Size return the number of integers included in the interval
 func (i IntervalInteger) Size() int {
 	return i.HighestNumberIncluded() - i.LowestNumberIncluded() + 1
+}
+
+func (i IntervalInteger) String() string {
+	intervalPart := fmt.Sprintf("%d;%d", i.min, i.max)
+
+	lowerBound := "]"
+	if i.MinIncluded() {
+		lowerBound = "["
+	}
+
+	higherBound := "["
+	if i.MaxIncluded() {
+		higherBound = "]"
+	}
+	return lowerBound + intervalPart + higherBound
 }

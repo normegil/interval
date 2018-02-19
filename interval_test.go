@@ -228,3 +228,21 @@ func TestHighestNumberIncluded(t *testing.T) {
 		}
 	}
 }
+
+func TestString(t *testing.T) {
+	tests := []string{
+		"[1;2]",
+		"[11;12]",
+		"[11;12[",
+		"]11;12]",
+		"]11;12[",
+	}
+	for _, definition := range tests {
+		t.Run(definition, func(t *testing.T) {
+			i := interval.Test_ParseIntervalInteger(t, definition)
+			if definition != i.String() {
+				t.Errorf("Expected is not equals to value {Expected:%s, Value:%s}", definition, i.String())
+			}
+		})
+	}
+}
