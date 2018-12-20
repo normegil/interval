@@ -29,16 +29,16 @@ func TestNewIntegerInterval(t *testing.T) {
 			t.Errorf("%+v: Error when running test: %s", test, err)
 		} else {
 			if i.Min() != test.min {
-				t.Errorf("%+v: Min (%d) and test data doesn't correspond", i.Min(), test)
+				t.Errorf("%+v: Min (%d) and test data doesn't correspond", i.Min(), test.min)
 			}
 			if i.Max() != test.max {
-				t.Errorf("%+v: Max (%d) and test data doesn't correspond", i.Max(), test)
+				t.Errorf("%+v: Max (%d) and test data doesn't correspond", i.Max(), test.max)
 			}
 			if i.MinIncluded() != test.minIncluded {
-				t.Errorf("%+v: MinIncluded (%t) and test data doesn't correspond", i.MinIncluded(), test)
+				t.Errorf("%+v: MinIncluded (%t) and test data doesn't correspond", i.MinIncluded(), test.minIncluded)
 			}
 			if i.MaxIncluded() != test.maxIncluded {
-				t.Errorf("%+v: MaxIncluded (%t) and test data doesn't correspond", i.MaxIncluded(), test)
+				t.Errorf("%+v: MaxIncluded (%t) and test data doesn't correspond", i.MaxIncluded(), test.maxIncluded)
 			}
 		}
 	}
@@ -87,16 +87,16 @@ func TestParseIntervalInteger(t *testing.T) {
 			t.Errorf("%+v: Error when running test: %s", test.input, err)
 		} else {
 			if i.Min() != test.min {
-				t.Errorf("%+v: Min (%d) and test data doesn't correspond", i.Min(), test)
+				t.Errorf("%+v: Min (%d) and test data doesn't correspond", i.Min(), test.min)
 			}
 			if i.Max() != test.max {
-				t.Errorf("%+v: Max (%d) and test data doesn't correspond", i.Max(), test)
+				t.Errorf("%+v: Max (%d) and test data doesn't correspond", i.Max(), test.max)
 			}
 			if i.MinIncluded() != test.minIncluded {
-				t.Errorf("%+v: MinIncluded (%t) and test data doesn't correspond", i.MinIncluded(), test)
+				t.Errorf("%+v: MinIncluded (%t) and test data doesn't correspond", i.MinIncluded(), test.minIncluded)
 			}
 			if i.MaxIncluded() != test.maxIncluded {
-				t.Errorf("%+v: MaxIncluded (%t) and test data doesn't correspond", i.MaxIncluded(), test)
+				t.Errorf("%+v: MaxIncluded (%t) and test data doesn't correspond", i.MaxIncluded(), test.maxIncluded)
 			}
 		}
 	}
